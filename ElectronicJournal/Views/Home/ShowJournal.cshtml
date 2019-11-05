@@ -1,0 +1,24 @@
+﻿@model ElectronicJournal.ViewModels.ShowJournalViewModel
+@{
+    ViewData["Title"] = "ShowDB";
+}
+<div style="margin-left:30%; margin-top:5%; width:60%">
+    <form method="post">
+        <div class="form-row">
+            <div class="form-group col-md-8">
+                <select id="selectGroup" name="Name" class="form-control">
+                    <option selected>Выбор взвода</option>
+                    @foreach (var item in Model.ListOfGroups)
+                    {
+                        
+                        <option>
+                            @item.Name
+                        </option>
+                    }
+
+                </select>
+            </div>
+        </div>
+        <button style="margin-left:25%" type="submit" class="btn btn-primary">Показать журнал</button>
+    </form>
+</div>

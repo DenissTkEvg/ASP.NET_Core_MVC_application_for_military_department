@@ -1,0 +1,37 @@
+﻿@model ElectronicJournal.ViewModels.ShowGroupViewModel;
+@{
+    ViewData["Title"] = "ShowGroupJournal";
+}
+
+<h3 style="margin-left:5%">Журнал взвода по направлению подготовки: «@Model.GroupSpecialtyName»</h3>
+<div align="center" style="margin-left:10%; margin-top:2%; width:80%">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th style="font-size:larger">Фамилия</th>
+                <th style="font-size:larger">Имя</th>
+                <th style="font-size:larger">Отчество</th>
+                <th style="font-size:larger">Взвод</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model.ListOfGroupStudents)
+            {
+
+                <tr>
+                    <th scope="row">#</th>
+                    <td style="font-size:larger">@item.Surname</td>
+                    <td style="font-size:larger">@item.Name</td>
+                    <td style="font-size:larger">@item.Patronymic</td>
+                    <td style="font-size:larger">@item.Group.Name</td>
+                    <td align=center><form action="/Home/ShowStudent/@item.StudentId"><button type="submit" class="btn btn-success">Посмотреть информацию</button></form></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+

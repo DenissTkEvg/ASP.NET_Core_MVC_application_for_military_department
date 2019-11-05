@@ -1,0 +1,92 @@
+﻿@model ElectronicJournal.ViewModels.ShowStudentViewModel;
+@{
+    ViewData["Title"] = "ShowStudent";
+}
+    <div class="container emp-profile">
+        <form method="post">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="profile-img">
+                        <img src="~/img/rtu.jpg" alt="" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="profile-head">
+                        <h5>
+                            @Model.CurrentStudent.Surname @Model.CurrentStudent.Name @Model.CurrentStudent.Patronymic
+                        </h5>
+                        <h6>
+                            @Model.CurrentStudent.Group.Name
+                        </h6>
+                        <p class="proile-rating">Направление подготовки: @Model.CurrentStudent.Group.Specialty.Name</p>
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="information-tab" data-toggle="tab" href="#information" role="tab" aria-controls="information" aria-selected="true">Общая информация</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="studyevents-tab" data-toggle="tab" href="#studyevents" role="tab" aria-controls="studyevents" aria-selected="false">Журнал событий</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#" role="tab" aria-controls="profile" aria-selected="false">График успеваемости</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+                <div class="col-md-8">
+                    <div class="tab-content profile-tab" id="myTabContent">
+                        <div class="tab-pane fade show active" id="information" role="tabpanel" aria-labelledby="home-tab" style="margin-left:45%; width:60%">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Дата Рождения:</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>@Model.CurrentStudent.DateOfBirth.ToShortDateString()</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Адресс проживания:</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>@Model.CurrentStudent.Address</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Учебная группа:</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>@Model.CurrentStudent.UniversityGroupName</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Средний балл экзаменов университета:</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>@Model.CurrentStudent.AverageExams</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="studyevents" role="tabpanel" aria-labelledby="studyevents-tab" style="margin-left:40%; width:85%">
+                           <ul>
+                               @foreach (var item in Model.EventsOfCurrentStudent)
+                               {
+                                  <li>
+                                     @item.EventType.  @item.DescriptionOfEvent (@item.EventDate.ToShortDateString())
+                                  </li>
+                               }
+                           </ul>
+                        </div>
+                    </div>
+                </div>
+        </form>
+    </div>
+
+      
+
+
+
+    
+

@@ -1,0 +1,91 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+<div style="margin-left:20%; margin-top:5%; width:60%">
+    <h2>Найти студента</h2>
+    <form method="post">
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="inputSecName">Фамилия</label>
+                <input type="text" name="Surname" class="form-control" id="inputSecName" placeholder="Иванов">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputName">Имя</label>
+                <input type="text" name="Name" class="form-control" id="inputName" placeholder="Иван">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="InputLastName">Отчество</label>
+                <input type="text" name="Patronymic" class="form-control" id="inputLastName" placeholder="Иванович">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-5">
+                <label for="selectGroup">Взвод</label>
+                <select id="selectGroup" name="Group.Name" class="form-control">
+                    <option selected>Выбор взвода</option>
+                       @foreach(var item in ViewBag.Groups)
+                       {
+                           <option>
+                               @item.Name
+                           </option>
+                       }
+                </select>
+            </div>
+          <div class="form-group col-md-5">
+              <label for="selectUnGroup">Учебная группа</label>
+              <select id="selectUnGroup" name="UniversityGroupName" class="form-control">
+                  <option selected>Выбор учебной группы</option>
+                  @foreach (var item in ViewBag.Students)
+                  {
+                      <option>
+                          @item.UniversityGroupName
+                      </option>
+                  }
+              </select>
+          </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="selectSpecialty">Направление подготовки (необязательно)</label>
+                <select id="selectSpecialty" name="Group.Specialty.Name" class="form-control">
+                    <option selected>Выбор направления</option>
+                    @foreach (var item in ViewBag.Specialties)
+                    {
+                        <option>
+                            @item.Name
+                        </option>
+                    }
+
+                </select>
+            </div>
+        </div>
+        @*<div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputCity">City</label>
+                <input type="text" class="form-control" id="inputCity">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputState">State</label>
+                <select id="inputState" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                </select>
+            </div>
+            <div class="form-group col-md-2">
+                <label for="inputZip">Zip</label>
+                <input type="text" class="form-cont*/l" id="inputZip">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input class="/*rm-check-input" type="checkbox"> Check me out
+                </label>
+            </div>
+        </div>*@
+        <button type="submit" class="btn btn-primary">Найти</button>
+   </form>
+     
+</div>
+
